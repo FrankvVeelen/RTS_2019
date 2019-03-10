@@ -101,6 +101,9 @@ static void DetermineNextInterruptTime (CandidateValue)
   Use the Task data structure defined in 'Scheduler.h' to store information which can be used by the scheduler.
 
 */
+uint8_t Q[NUMTASKS] = { 0 };
+uint8_t Q_INDEX = NUMTASKS-1;
+uint8_t BUFFER_PERIOD_ARRAY[NUMTASKS] = { 0 };
 
 interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
 {
@@ -111,21 +114,60 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
   /* Insert timer interrupt logic, what tasks are pending? */ 
   /* When should the next timer interrupt occur? Note: we only want interrupts at job releases */
 
-  /* Super simple, single task example */
   int i;
   for(i=0; i < NUMTASKS; i++) {
       Taskp t = &Tasks[i];
       t->NextRelease += t->Period; // set next release time
       t->Activated++;
-      if (t->Invoked) {
+      /*if (t->Invoked) {
           DetermineNextInterruptTime(t->NextPendingDeadline);
       }
       else {
           DetermineNextInterruptTime(t->NextRelease);
-      }
-  }
-  /* End of example*/
+      }*/
 
+	  /*Initialize the NextInterruptTime variable to a value that is not 0*/
+	  static bool Toggle = true;
+	  if (Toggle)
+	  {
+		  NextInterruptTime = t->NextRelease;
+		  Toggle = false;
+	  }
+	  DetermineNextInterruptTime(t->NextRelease);
+
+	  /*Get array of Periods matching the Task (so task 0 matches its period on index 0 in the buffer array, this is important in order to order the TASKS on their period)*/
+	  BUFFER_PERIOD_ARRAY[i] = t->Period;
+  }
+
+  /*Super simple sort on descending order*/
+  for (i = 0; i < NUMTASKS; i++)
+  {
+	  int j;
+	  for (j = 0; j < NUMTASKS - i; j++)
+	  {
+		  if (BUFFER_PERIOD_ARRAY[j] > BUFFER_PERIOD_ARRAY[j+1])
+		  {
+			  uint8_t Temp = BUFFER_PERIOD_ARRAY[j];
+			  BUFFER_PERIOD_ARRAY[j] = BUFFER_PERIOD_ARRAY[j + 1];
+			  BUFFER_PERIOD_ARRAY[j + 1] = Temp;
+		  }
+	  }
+  }
+
+  /*Naive way to associate Task number to its Period (might be fucked when period is the same for multiple Tasks)*/
+  for (i = 0; i < NUMTASKS; i++)
+  {
+	  int j;
+	  for (j = 0; j < NUMTASKS; j++)
+	  {
+		  Taskp t = &Tasks[j];
+		  if (BUFFER_PERIOD_ARRAY[i] == t->Period && Q_INDEX >= 0)
+		  {
+			  Q[Q_INDEX] = j;
+			  Q_INDEX--;
+		  }
+	  }
+  }
   /* ---------------------------------------------------------------- */
  
 
