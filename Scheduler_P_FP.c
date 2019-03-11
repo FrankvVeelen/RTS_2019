@@ -5,10 +5,8 @@ static void ExecuteTask (Taskp t)
 {
   /* ----------------------- INSERT CODE HERE ----------------------- */
 
-  t->Invoked++;
   t->Taskf(t->ExecutionTime); // execute task
-  //When the task has completed, call the scheduler again
-  CALL_SCHEDULER;
+  t->Invoked++;
 
   /* ---------------------------------------------------------------- */
 
@@ -18,26 +16,12 @@ void Scheduler_P_FP (Task Tasks[])
 { 
   /* ----------------------- INSERT CODE HERE ----------------------- */
   int i;
-  int higherPriorityRunning = 0;
-  /*for(i=0; i < NUMTASKS && !higherPriorityRunning; i++) {
-    Taskp t = &Tasks[i];
-    if (t->Activated) 
-	{
-      if (!t->Invoked) 
-	  {
-        ExecuteTask(t);
+  for(i=NUMTASKS-1; i!=-1; i--) {
+	  Taskp t = &Tasks[i];
+	  if (t->Activated != t->Invoked) {
+		  ExecuteTask(t);
       }
-      higherPriorityRunning = 1;
-    }
-  }*/
-	
-	Taskp t = &Tasks[Q[Q_INDEX]];
-	if (t->Activated != t->Invoked)
-	{
-		ExecuteTask(t);
-		t->Invoked++;
-	}
-
+  }
 
   /* ---------------------------------------------------------------- */
 }

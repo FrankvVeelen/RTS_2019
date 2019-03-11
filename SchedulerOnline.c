@@ -7,7 +7,7 @@
 #include "Context.h"
 
 Task Tasks[NUMTASKS];           /* Lower indices: lower priorities           */
-uint16_t NextInterruptTime;     /* Timestamp at which next interrupt should occur */
+uint16_t NextInterruptTime = 0;     /* Timestamp at which next interrupt should occur */
 
 uint16_t IntDisable (void)
 {
@@ -51,8 +51,9 @@ uint8_t RegisterTask (uint16_t Phasing, uint16_t Period, uint16_t ExecutionTime,
   uint8_t  rtc = E_SUCCESS;
   uint16_t sw;
 
-  Phasing *= 4; // correct to get ms approximately
-  Period *=4; // correct to get ms approximately
+  Period *= 4;
+  Phasing*=4;
+
 
   if (Prio>=NUMTASKS) return (E_BOUNDS); // out of bounds
   if (Period == 0) return (E_WRONGPAR);
@@ -80,7 +81,7 @@ uint8_t UnRegisterTask (uint8_t t)
 
 static void DetermineNextInterruptTime (CandidateValue)
 {
-  if (CandidateValue < NextInterruptTime)
+  if ((CandidateValue < NextInterruptTime) || (NextInterruptTime == 0))
   {
     NextInterruptTime = CandidateValue;
   }
@@ -101,77 +102,34 @@ static void DetermineNextInterruptTime (CandidateValue)
   Use the Task data structure defined in 'Scheduler.h' to store information which can be used by the scheduler.
 
 */
-uint8_t Q[NUMTASKS] = { 0 };
-uint8_t Q_INDEX = NUMTASKS-1;
-uint8_t BUFFER_PERIOD_ARRAY[NUMTASKS] = { 0 };
 
 interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
 {
   ContextSwitch();
-
   /* ----------------------- INSERT CODE HERE ----------------------- */
 
   /* Insert timer interrupt logic, what tasks are pending? */ 
   /* When should the next timer interrupt occur? Note: we only want interrupts at job releases */
 
   int i;
-  for(i=0; i < NUMTASKS; i++) {
+  for(i= NUMTASKS-1; i != -1; i--) {
       Taskp t = &Tasks[i];
-      t->NextRelease += t->Period; // set next release time
-      t->Activated++;
-      /*if (t->Invoked) {
-          DetermineNextInterruptTime(t->NextPendingDeadline);
+
+      if(t->NextRelease < TAR * 4) {
+          t->Activated++; // Activate the tasks that need to be planned in this time
+          t->NextRelease += t->Period; // set next release time
       }
-      else {
-          DetermineNextInterruptTime(t->NextRelease);
-      }*/
-
-	  /*Initialize the NextInterruptTime variable to a value that is not 0*/
-	  static bool Toggle = true;
-	  if (Toggle)
-	  {
-		  NextInterruptTime = t->NextRelease;
-		  Toggle = false;
-	  }
-	  DetermineNextInterruptTime(t->NextRelease);
-
-	  /*Get array of Periods matching the Task (so task 0 matches its period on index 0 in the buffer array, this is important in order to order the TASKS on their period)*/
-	  BUFFER_PERIOD_ARRAY[i] = t->Period;
+      if (i == NUMTASKS-1){
+        NextInterruptTime = t->NextRelease;
+      }
+//      else if (t->NextRelease < NextInterruptTime) {
+//        NextInterruptTime = t->NextRelease;
+//      }
   }
 
-  /*Super simple sort on descending order*/
-  for (i = 0; i < NUMTASKS; i++)
-  {
-	  int j;
-	  for (j = 0; j < NUMTASKS - i; j++)
-	  {
-		  if (BUFFER_PERIOD_ARRAY[j] > BUFFER_PERIOD_ARRAY[j+1])
-		  {
-			  uint8_t Temp = BUFFER_PERIOD_ARRAY[j];
-			  BUFFER_PERIOD_ARRAY[j] = BUFFER_PERIOD_ARRAY[j + 1];
-			  BUFFER_PERIOD_ARRAY[j + 1] = Temp;
-		  }
-	  }
-  }
-
-  /*Naive way to associate Task number to its Period (might be fucked when period is the same for multiple Tasks)*/
-  for (i = 0; i < NUMTASKS; i++)
-  {
-	  int j;
-	  for (j = 0; j < NUMTASKS; j++)
-	  {
-		  Taskp t = &Tasks[j];
-		  if (BUFFER_PERIOD_ARRAY[i] == t->Period && Q_INDEX >= 0)
-		  {
-			  Q[Q_INDEX] = j;
-			  Q_INDEX--;
-		  }
-	  }
-  }
-  /* ---------------------------------------------------------------- */
- 
-
-  TACCR0 = NextInterruptTime;
+    /* ---------------------------------------------------------------- */
+    NextInterruptTime =100;
+  TACCR0 = NextInterruptTime / 4;
 
   CALL_SCHEDULER;
 
