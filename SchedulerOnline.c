@@ -116,10 +116,11 @@ interrupt(TIMERA0_VECTOR) TimerIntrpt(void)
 	for (i = NUMTASKS - 1; i >= 0; i--)
 	{
 		Taskp t = &Tasks[i];
-		if (t->NextRelease <= TAR && !(t->Flags & BUSY_EXEC))
+		if (t->NextRelease <= TAR)
 		{
+			/*Dont activate task again when its busy*/
+			if (!(t->Flags & BUSY_EXEC)) t->Activated++;
 			t->NextRelease += t->Period; // set next release time
-			t->Activated++;
 		}
 
 		if (i == NUMTASKS - 1)
