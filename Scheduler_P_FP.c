@@ -15,16 +15,18 @@ static void ExecuteTask(Taskp t)
 void Scheduler_P_FP(Task Tasks[])
 {
 	/* ----------------------- INSERT CODE HERE ----------------------- */
-
 	/* Super simple, single task example */
-	int i;
-	//for (i = NUMTASKS - 1; i >= -1; i--)
-	for (i = 0; i < NUMTASKS; i++)
+    int i;
+    //for (i = NUMTASKS - 1; i >= -1; i--)
+    for (i = 0; i < NUMTASKS; i++)
 	{
-		Taskp t = &Tasks[i];
+        StartTracking(TT_SCHEDULER);
+        Taskp t = &Tasks[i];
 		if (t->Flags & BUSY_EXEC)
 		{
-			break;
+            StopTracking(TT_SCHEDULER);
+            PrintResults();
+            break;
 		}
 		else
 		{
@@ -32,17 +34,21 @@ void Scheduler_P_FP(Task Tasks[])
 			{
 				t->Activated = t->Invoked;
 			}
+            StopTracking(TT_SCHEDULER);
+            PrintResults();
 
-			while (t->Activated != t->Invoked)
+            while (t->Activated != t->Invoked)
 			{
-				t->Flags |= BUSY_EXEC;
-				_EINT();
-				StopTracking(TT_TIMER_INTERRUPT);
-				ExecuteTask(t);
-				StartTracking(TT_TIMER_INTERRUPT);
-				_DINT();
-			}
-		}
-	}
+                StartTracking(TT_SCHEDULER);
+                t->Flags |= BUSY_EXEC;
+                _EINT();
+                StopTracking(TT_SCHEDULER);
+                ExecuteTask(t);
+                StartTracking(TT_SCHEDULER);
+                _DINT();
+                StopTracking(TT_SCHEDULER);
+            }
+        }
+    }
 	/* ---------------------------------------------------------------- */
 }

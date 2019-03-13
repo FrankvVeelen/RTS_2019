@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "ErrorCodes.h"
 
-#define NUMTASKS    3  /* # tasks admitted                                 */
+#define NUMTASKS    10  /* # tasks admitted                                 */
 
 #define DIRECT      1   /* task flag: execute uninterruptable, when ready   */
 #define PERIODIC    2   /* general flag: trigger by timer interrupt         */

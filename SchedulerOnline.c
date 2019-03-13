@@ -105,10 +105,10 @@ static void DetermineNextInterruptTime(CandidateValue)
 
 interrupt(TIMERA0_VECTOR) TimerIntrpt(void)
 {
-	StartTracking(TT_TIMER_INTERRUPT);
 	ContextSwitch();
 
-	/* ----------------------- INSERT CODE HERE ----------------------- */
+    StartTracking(TT_TIMER_INTERRUPT);
+    /* ----------------------- INSERT CODE HERE ----------------------- */
 
 	/* Insert timer interrupt logic, what tasks are pending? */
 	/* When should the next timer interrupt occur? Note: we only want interrupts at job releases */
@@ -133,16 +133,16 @@ interrupt(TIMERA0_VECTOR) TimerIntrpt(void)
 
 		DetermineNextInterruptTime(t->NextRelease);
 	}
-	/* ---------------------------------------------------------------- */
+    StopTracking(TT_TIMER_INTERRUPT);
+    PrintResults();
+    /* ---------------------------------------------------------------- */
 
-	TACCR0 = NextInterruptTime;
+    TACCR0 = NextInterruptTime;
 
-	CALL_SCHEDULER;
+    CALL_SCHEDULER;
 
-	ResumeContext();
+    ResumeContext();
 
-	StopTracking(TT_TIMER_INTERRUPT);
-	PrintResults();
 }
 
 #endif
