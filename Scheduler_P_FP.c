@@ -1,5 +1,6 @@
 #include "Scheduler.h"
 #include "Led.h"
+#include "TimeTracking.h"
 
 static void ExecuteTask(Taskp t)
 {
@@ -17,25 +18,31 @@ void Scheduler_P_FP(Task Tasks[])
 
 	/* Super simple, single task example */
 	int i;
-	for (i = NUMTASKS - 1; i >= -1; i--)
+	//for (i = NUMTASKS - 1; i >= -1; i--)
+	for (i = 0; i < NUMTASKS; i++)
 	{
 		Taskp t = &Tasks[i];
 		if (t->Flags & BUSY_EXEC)
 		{
 			break;
 		}
-		if (t->Activated != t->Invoked)
+		else
 		{
-			t->Flags |= BUSY_EXEC;
-			_EINT();
-			ExecuteTask(t);
-			_DINT();
-		}
-		else {
-			t->Activated = t->Invoked;
+			if (!(t->Flags & TRIGGERED))
+			{
+				t->Activated = t->Invoked;
+			}
+
+			while (t->Activated != t->Invoked)
+			{
+				t->Flags |= BUSY_EXEC;
+				_EINT();
+				StopTracking(TT_TIMER_INTERRUPT);
+				ExecuteTask(t);
+				StartTracking(TT_TIMER_INTERRUPT);
+				_DINT();
+			}
 		}
 	}
-
-
 	/* ---------------------------------------------------------------- */
 }
