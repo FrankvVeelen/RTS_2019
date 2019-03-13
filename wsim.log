@@ -5,42 +5,5 @@ mcu   : msp430
 model : msp430f1611
   xin : 32768
   xt2 : 0
-==
-Memory monitor
-  monitor: NextInterruptTime 0x1106:2  w mod 0 0
-==
-
-================
-WSim stats:
------------
-  simulation user time          : 0.000 s (724 ns)
-  simulation backtracks         : 0
-
-Machine stats:
---------------
-  simulated time                : 5000000531 ns (5.000 s)
-  simulation speedup            : 6.91
-  machine exit with signal      : none
-
-MCU:
-----
-  simulated mcu instructions    : 1522420
-  simulated mcu cycles          : 3750409
-  simulated mcu mean freq       : 750081.75 c/s (0.75 MHz)
-  simulation mean freq          : 5179800.98 c/s (5.18 MHz)
-     - does not take into account sleep modes
-  mcu exit at PC                : 0x40d0
-  mcu exit in LPM mode          : Active mode
-  mcu exit with IV              : 0x0000
-
-DEVICES:
---------
-  - System Platform             :
-  - Led display                 :
-  - Led display                 :
-  - Led display                 :
-  - at45db flash memory         :
-  - cc2420 radio device         :
-  - ptty serial I/O             :
-
-================
+libelf: error while opening elf file [SchedTest.elf]
+wsim: error while loading Elf file

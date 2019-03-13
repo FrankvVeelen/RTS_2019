@@ -103,37 +103,39 @@ static void DetermineNextInterruptTime (CandidateValue)
 
 */
 
-interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
+interrupt(TIMERA0_VECTOR) TimerIntrpt(void)
 {
-  ContextSwitch();
-  /* ----------------------- INSERT CODE HERE ----------------------- */
+	ContextSwitch();
 
-  /* Insert timer interrupt logic, what tasks are pending? */ 
-  /* When should the next timer interrupt occur? Note: we only want interrupts at job releases */
+	/* ----------------------- INSERT CODE HERE ----------------------- */
 
-  int i;
-  for(i= NUMTASKS-1; i != -1; i--) {
-      Taskp t = &Tasks[i];
+	/* Insert timer interrupt logic, what tasks are pending? */
+	/* When should the next timer interrupt occur? Note: we only want interrupts at job releases */
 
-      if(t->NextRelease < TAR * 4) {
-          t->Activated++; // Activate the tasks that need to be planned in this time
-          t->NextRelease += t->Period; // set next release time
-      }
-      if (i == NUMTASKS-1){
-        NextInterruptTime = t->NextRelease;
-      }
-//      else if (t->NextRelease < NextInterruptTime) {
-//        NextInterruptTime = t->NextRelease;
-//      }
-  }
+	int i;
+	for (i = NUMTASKS - 1; i >= 0; i--)
+	{
+		Taskp t = &Tasks[i];
+		if (t->NextRelease <= TAR && !(t->Flags & BUSY_EXEC))
+		{
+			t->NextRelease += t->Period; // set next release time
+			t->Activated++;
+		}
 
-    /* ---------------------------------------------------------------- */
-    NextInterruptTime =100;
-  TACCR0 = NextInterruptTime / 4;
+		if (i == NUMTASKS - 1)
+		{
+			NextInterruptTime = t->NextRelease;
+		}
 
-  CALL_SCHEDULER;
+		DetermineNextInterruptTime(t->NextRelease);
+	}
+	/* ---------------------------------------------------------------- */
 
-  ResumeContext();
+	TACCR0 = NextInterruptTime;
+
+	CALL_SCHEDULER;
+
+	ResumeContext();
 }
 
 #endif
