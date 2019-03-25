@@ -114,6 +114,7 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
         {
           t->Activated++; // set task to pending
           t->NextRelease += t->Period; // set next release time
+          t->NextPendingDeadline = t->NextRelease;
         }
         DetermineNextInterruptTime(t->NextRelease); // this might be the next interrupt time
       }

@@ -15,14 +15,12 @@ static void ExecuteTask(Taskp t)
 void Scheduler_P_FP(Task Tasks[])
 {
 	/* ----------------------- INSERT CODE HERE ----------------------- */
-	/* Super simple, single task example */
     int i;
-    //for (i = NUMTASKS - 1; i >= -1; i--)
     for (i = 0; i < NUMTASKS; i++)
 	{
         StartTracking(TT_SCHEDULER);
         Taskp t = &Tasks[i];
-		if (t->Flags & BUSY_EXEC)
+        if (t->Flags & BUSY_EXEC)
 		{
             StopTracking(TT_SCHEDULER);
             PrintResults();
