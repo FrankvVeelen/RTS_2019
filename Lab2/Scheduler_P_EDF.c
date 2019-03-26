@@ -17,6 +17,7 @@ void Scheduler_P_EDF (Task Tasks[])
   {
     StartTracking(TT_SCHEDULER);
     Taskp t = &Tasks[i];
+    // Determine next deadline and its' task
     if(i == 0){
       firstDeadline = t->NextPendingDeadline;
       firstDeadlineTask = 0;
