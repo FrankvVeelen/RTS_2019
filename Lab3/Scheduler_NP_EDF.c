@@ -13,6 +13,10 @@ void Scheduler_P_EDF(Task Tasks[])
 	int i;
 	int firstDeadline;
 	int firstDeadlineTask;
+	static bool BusyExecuting;
+	
+
+	//Practisch een soort
 	for (i = 0; i < NUMTASKS; i++)
 	{
 		StartTracking(TT_SCHEDULER);
@@ -26,14 +30,21 @@ void Scheduler_P_EDF(Task Tasks[])
 			firstDeadlineTask = i;
 		}
 	}
+
 	Taskp t = &Tasks[firstDeadlineTask];
 
-	StartTracking(TT_SCHEDULER);
-	t->Flags |= BUSY_EXEC;
-	//_EINT();
-	StopTracking(TT_SCHEDULER);
-	ExecuteTask(t);
-	StartTracking(TT_SCHEDULER);
-	//_DINT();
-	StopTracking(TT_SCHEDULER);
+	//If t is already scheduled, dont preempt task by executing another
+	if ( !BusyExecuting )
+	{
+		StartTracking(TT_SCHEDULER);
+		t->Flags |= BUSY_EXEC;
+		_EINT();
+		StopTracking(TT_SCHEDULER);
+		BusyExecuting = true;
+		ExecuteTask(t);
+		BusyExecuting = false;
+		StartTracking(TT_SCHEDULER);
+		_DINT();
+		StopTracking(TT_SCHEDULER);
+	}
 }
