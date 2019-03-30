@@ -63,7 +63,7 @@ uint8_t RegisterTask (uint16_t Phasing, uint16_t Period, uint16_t ExecutionTime,
   if (t->Flags) rtc = E_BUSY; 
   else {
     t->NextRelease = 0 + Phasing;
-    //t->Remaining = Phasing;
+    t->Remaining = Phasing;
     t->Period    = Period; 
     t->NextPendingDeadline = t->NextRelease + Period;
     t->Activated = t->Invoked = 0; 
@@ -114,6 +114,7 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
         {
           t->Activated++; // set task to pending
           t->NextRelease += t->Period; // set next release time
+          t->NextPendingDeadline = t->NextRelease;
         }
         DetermineNextInterruptTime(t->NextRelease); // this might be the next interrupt time
       }

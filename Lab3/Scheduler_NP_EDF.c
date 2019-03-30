@@ -1,4 +1,5 @@
 #include "Scheduler.h"
+#include "TimeTracking.h"
 #include "Led.h"
 
 static void ExecuteTask(Taskp t)
@@ -8,43 +9,77 @@ static void ExecuteTask(Taskp t)
 	t->Flags ^= BUSY_EXEC;
 }
 
-void Scheduler_P_EDF(Task Tasks[])
+void Scheduler_NP_EDF(Task Tasks[])
 {
-	int i;
-	int firstDeadline;
-	int firstDeadlineTask;
-	static bool BusyExecuting;
-	
+	uint8_t i;
+	Taskp Q[NUMTASKS];
+	uint8_t Init;
 
-	//Practisch een soort
+	//Init Q array of Task pointers, so we don't change the original Task array
+	if (Init != 1)
+	{
+		for (i = 0; i < NUMTASKS; i++)
+		{
+			Q[i] = &Tasks[i];
+		}
+		Init = 1;
+	}
+
+	//Bubblesort on descending order
 	for (i = 0; i < NUMTASKS; i++)
 	{
-		StartTracking(TT_SCHEDULER);
-		Taskp t = &Tasks[i];
-		if (i == 0) {
-			firstDeadline = t->NextPendingDeadline;
-			firstDeadlineTask = 0;
-		}
-		else if (t->NextPendingDeadline < firstDeadline) {
-			firstDeadline = t->NextPendingDeadline;
-			firstDeadlineTask = i;
+		int j;
+		for (j = 0; j < NUMTASKS - i - 1; j++)
+		{
+			if (Q[j]->NextPendingDeadline != Q[j + 1]->NextPendingDeadline)
+			{
+				if (Q[j]->NextPendingDeadline > Q[j + 1]->NextPendingDeadline)
+				{
+					Taskp T = Q[j];
+					Q[j] = Q[j + 1];
+					Q[j + 1] = T;
+				}
+			}
+			else
+			{
+				if (Q[j+1]->Prio > Q[j]->Prio)
+				{
+					Taskp T = Q[j+1];
+					Q[j+1] = Q[j];
+					Q[j] = T;
+				}
+			}
 		}
 	}
 
-	Taskp t = &Tasks[firstDeadlineTask];
+	static uint8_t Busy = 0;
 
-	//If t is already scheduled, dont preempt task by executing another
-	if ( !BusyExecuting )
+	for (i = 0; i < NUMTASKS; i++)
 	{
-		StartTracking(TT_SCHEDULER);
-		t->Flags |= BUSY_EXEC;
-		_EINT();
-		StopTracking(TT_SCHEDULER);
-		BusyExecuting = true;
-		ExecuteTask(t);
-		BusyExecuting = false;
-		StartTracking(TT_SCHEDULER);
-		_DINT();
-		StopTracking(TT_SCHEDULER);
+		if (Q[i]->Flags & BUSY_EXEC)
+		{
+			break;
+		}
+		else
+		{
+			if (!(Q[i]->Flags & TRIGGERED))
+			{
+				Q[i]->Activated = Q[i]->Invoked;
+			}
+
+			if (Q[i]->Activated != Q[i]->Invoked && (Busy == 0))
+			{
+				StartTracking(TT_SCHEDULER);
+				Q[i]->Flags |= BUSY_EXEC;
+				_EINT();
+				StopTracking(TT_SCHEDULER);
+				Busy = 1;
+				ExecuteTask(Q[i]);
+				Busy = 0;
+				StartTracking(TT_SCHEDULER);
+				_DINT();
+				StopTracking(TT_SCHEDULER);
+			}
+		}
 	}
 }
