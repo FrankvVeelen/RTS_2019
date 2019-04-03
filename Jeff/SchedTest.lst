@@ -15,7 +15,6 @@ SYMBOL TABLE:
 00000000 l    d  .debug_frame	00000000 .debug_frame
 00000000 l    d  .debug_str	00000000 .debug_str
 00000000 l    d  .debug_loc	00000000 .debug_loc
-00004642 l    d  .debug_ranges	00000000 .debug_ranges
 00000130 l       *ABS*	00000000 MPY
 00000132 l       *ABS*	00000000 MPYS
 00000134 l       *ABS*	00000000 MAC
@@ -278,6 +277,7 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
+00001106 l     O .bss	00000002 Running.1742
 00000000 l    df *ABS*	00000000 Scheduler_P_FP.c
 00000130 l       *ABS*	00000000 __MPY
 00000132 l       *ABS*	00000000 __MPYS
@@ -305,6 +305,7 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
+00001108 l     O .bss	00000002 Running.1752
 00000000 l    df *ABS*	00000000 TimeTracking.c
 00000130 l       *ABS*	00000000 __MPY
 00000132 l       *ABS*	00000000 __MPYS
@@ -314,28 +315,28 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-00001106 l     O .bss	00000004 StartTimes
-0000110a l     O .bss	00000004 Totals
-0000110e l     O .bss	00000001 JobsExecuted
+0000110a l     O .bss	00000004 StartTimes
+0000110e l     O .bss	00000004 Totals
+00001112 l     O .bss	00000001 JobsExecuted
 00000000 g       *ABS*	00000000 __data_size
 0000423c g     F .text	00000084 RegisterTask
 000041d6 g     F .text	00000016 ResumeContext
 000041a6 g     F .text	00000018 InitClock
-000045ee g     F .text	0000000c StartTracking
+00004646 g     F .text	0000000c StartTracking
 00004186 g     F .text	0000000a InitLeds
 00004036 g     F .text	00000018 CountDelay
-00004642 g       .text	00000000 _etext
-00000042 g       *ABS*	00000000 __bss_size
-00004610 g     F .text	00000006 AddJobExecution
+0000469a g       .text	00000000 _etext
+00000046 g       *ABS*	00000000 __bss_size
+00004668 g     F .text	00000006 AddJobExecution
 00004030 g       .text	00000000 _unexpected_1_
 00004030  w      .text	00000000 vector_ffe0
-0000437c g     F .text	00000002 Scheduler_NP_FP
-000044ec g     F .text	00000102 Scheduler_NP_EDF
-0000437e g     F .text	00000092 Scheduler_P_FP
-00004410 g     F .text	000000dc Scheduler_P_EDF
+00004370 g     F .text	0000008c Scheduler_NP_FP
+0000456a g     F .text	000000dc Scheduler_NP_EDF
+000043fc g     F .text	00000092 Scheduler_P_FP
+0000448e g     F .text	000000dc Scheduler_P_EDF
 000042d4 g       .text	00000000 vector_ffec
 00004030  w      .text	00000000 vector_fff0
-00004642 g       *ABS*	00000000 __data_load_start
+0000469a g       *ABS*	00000000 __data_load_start
 00004030 g       .text	00000000 __dtors_end
 00004030  w      .text	00000000 vector_fffc
 0000414a g     F .text	0000003c BlinkYellow
@@ -347,12 +348,12 @@ SYMBOL TABLE:
 000041be g     F .text	00000018 ContextSwitch
 0000410e g     F .text	0000003c BlinkGreen
 0000401c  w      .text	00000000 __do_clear_bss
-000042d4 g     F .text	000000a8 TimerIntrpt
+000042d4 g     F .text	0000009c TimerIntrpt
 00004030  w      .text	00000000 vector_ffe2
 00004030  w      .text	00000000 vector_ffe8
 00004034  w      .text	00000000 _unexpected_
 00004030  w      .text	00000000 vector_fffa
-00001110 g     O .bss	00000030 Tasks
+00001114 g     O .bss	00000030 Tasks
 00004000  w      .text	00000000 _reset_vector__
 00004030 g       .text	00000000 __ctors_start
 0000400a  w      .text	00000000 __do_copy_data
@@ -362,26 +363,26 @@ SYMBOL TABLE:
 00004030  w      .text	00000000 vector_fff4
 0000406e g     F .text	00000064 main
 00004030  w      .text	00000000 vector_fff8
-00004616 g     F .text	0000002c PrintResults
+0000466e g     F .text	0000002c PrintResults
 00004030  w      .text	00000000 vector_fff2
 000040d2 g     F .text	0000003c BlinkRed
 00010000 g       .vectors	00000000 _vectors_end
 00004030  w      .text	00000000 vector_ffe6
 000041ec g     F .text	00000006 IntDisable
-00001140 g     O .bss	00000002 NextInterruptTime
+00001144 g     O .bss	00000002 NextInterruptTime
 00004000  w      .text	00000000 __init_stack
 00004030 g       .text	00000000 __dtors_start
 00004030 g       .text	00000000 __ctors_end
 00003900 g       *ABS*	00000000 __stack
 00001100 g       .bss	00000000 _edata
-00001142 g       .bss	00000000 _end
+00001146 g       .bss	00000000 _end
 00004030  w      .text	00000000 vector_fff6
 00004004  w      .text	00000000 __low_level_init
 0000402c  w      .text	00000000 __jump_to_main
 000041f6 g     F .text	00000046 InitTasks
 00001100 g       .bss	00000000 __data_start
 00004030  w      .text	00000000 vector_ffea
-000045fa g     F .text	00000016 StopTracking
+00004652 g     F .text	00000016 StopTracking
 000041f2 g     F .text	00000004 RestoreSW
 
 
@@ -400,12 +401,12 @@ Disassembly of section .text:
     400e:	0f 93       	tst	r15		
     4010:	05 24       	jz	$+12     	;abs 0x401c
     4012:	2f 83       	decd	r15		
-    4014:	9f 4f 42 46 	mov	17986(r15),4352(r15);0x4642(r15), 0x1100(r15)
+    4014:	9f 4f 9a 46 	mov	18074(r15),4352(r15);0x469a(r15), 0x1100(r15)
     4018:	00 11 
     401a:	fb 23       	jnz	$-8      	;abs 0x4012
 
 0000401c <__do_clear_bss>:
-    401c:	3f 40 42 00 	mov	#66,	r15	;#0x0042
+    401c:	3f 40 46 00 	mov	#70,	r15	;#0x0046
     4020:	0f 93       	tst	r15		
     4022:	04 24       	jz	$+10     	;abs 0x402c
     4024:	1f 83       	dec	r15		
@@ -842,7 +843,7 @@ void InitTasks (void)
   do { 
     Taskp t = &Tasks[i];
     t->Flags = t->Activated = t->Invoked = 0;
-    41f6:	3f 40 37 11 	mov	#4407,	r15	;#0x1137
+    41f6:	3f 40 3b 11 	mov	#4411,	r15	;#0x113b
     41fa:	cf 43 00 00 	mov.b	#0,	0(r15)	;r3 As==00, 0x0000(r15)
     41fe:	0e 4f       	mov	r15,	r14	
     4200:	3e 53       	add	#-1,	r14	;r3 As==11
@@ -928,7 +929,7 @@ uint16_t IntDisable (void)
     4270:	0b 5b       	rla	r11		
     4272:	0b 5b       	rla	r11		
     4274:	0b 5b       	rla	r11		
-    4276:	3b 50 10 11 	add	#4368,	r11	;#0x1110
+    4276:	3b 50 14 11 	add	#4372,	r11	;#0x1114
   if (t->Flags) rtc = E_BUSY; 
     427a:	1a 4b 08 00 	mov	8(r11),	r10	;0x0008(r11)
     427e:	0a 93       	tst	r10		
@@ -998,7 +999,7 @@ uint8_t UnRegisterTask (uint8_t t)
     42c6:	0f 5f       	rla	r15		
     42c8:	0f 5f       	rla	r15		
     42ca:	0f 5f       	rla	r15		
-    42cc:	8f 43 10 11 	mov	#0,	4368(r15);r3 As==00, 0x1110(r15)
+    42cc:	8f 43 14 11 	mov	#0,	4372(r15);r3 As==00, 0x1114(r15)
   return (E_SUCCESS);
 }  
     42d0:	4f 43       	clr.b	r15		
@@ -1019,7 +1020,7 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
   
   StartTracking(TT_TIMER_INTERRUPT);
     42dc:	4f 43       	clr.b	r15		
-    42de:	b0 12 ee 45 	call	#0x45ee	
+    42de:	b0 12 46 46 	call	#0x4646	
   
   ContextSwitch();
     42e2:	b0 12 be 41 	call	#0x41be	
@@ -1028,11 +1029,11 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
     42e6:	5e 43       	mov.b	#1,	r14	;r3 As==01
     42e8:	6f 42       	mov.b	#4,	r15	;r2 As==10
     42ea:	b0 12 90 41 	call	#0x4190	
-    42ee:	1e 42 40 11 	mov	&0x1140,r14	
+    42ee:	1e 42 44 11 	mov	&0x1144,r14	
 
   while(NextInterruptTime <= TAR)
     42f2:	1b 3c       	jmp	$+56     	;abs 0x432a
-    42f4:	3f 40 10 11 	mov	#4368,	r15	;#0x1110
+    42f4:	3f 40 14 11 	mov	#4372,	r15	;#0x1114
   {
     NextInterruptTime = CandidateValue;
   }
@@ -1079,7 +1080,7 @@ static void DetermineNextInterruptTime (CandidateValue)
     NextInterruptTime = 0xFFFF; // reset next intterupt time so it can be determined again
 
     for (i = 0; i < NUMTASKS; i++) // loop through all task to see which need to be scheduled
-    4320:	3f 90 40 11 	cmp	#4416,	r15	;#0x1140
+    4320:	3f 90 44 11 	cmp	#4420,	r15	;#0x1144
     4324:	02 24       	jz	$+6      	;abs 0x432a
     4326:	0d 4e       	mov	r14,	r13	
     4328:	e8 3f       	jmp	$-46     	;abs 0x42fa
@@ -1091,7 +1092,7 @@ static void DetermineNextInterruptTime (CandidateValue)
   while(NextInterruptTime <= TAR)
     432a:	82 9e 70 01 	cmp	r14,	&0x0170	
     432e:	e2 2f       	jc	$-58     	;abs 0x42f4
-    4330:	82 4e 40 11 	mov	r14,	&0x1140	
+    4330:	82 4e 44 11 	mov	r14,	&0x1144	
         DetermineNextInterruptTime(t->NextRelease); // this might be the next interrupt time
       }
     }    
@@ -1106,11 +1107,734 @@ static void DetermineNextInterruptTime (CandidateValue)
     433c:	b0 12 90 41 	call	#0x4190	
   StopTracking(TT_TIMER_INTERRUPT);
     4340:	4f 43       	clr.b	r15		
-    4342:	b0 12 fa 45 	call	#0x45fa	
+    4342:	b0 12 52 46 	call	#0x4652	
   
-  StartTracking(TT_SCHEDULER);
-    4346:	5f 43       	mov.b	#1,	r15	;r3 As==01
-    4348:	b0 12 ee 45 	call	#0x45ee	
   SetLeds(BROWN, 1);
-    434c:	5e 43       	mov.b	#1,	r14	;r3 As==01
-    434e:	6f 43 
+    4346:	5e 43       	mov.b	#1,	r14	;r3 As==01
+    4348:	6f 43       	mov.b	#2,	r15	;r3 As==10
+    434a:	b0 12 90 41 	call	#0x4190	
+
+  CALL_SCHEDULER;
+    434e:	3f 40 14 11 	mov	#4372,	r15	;#0x1114
+    4352:	b0 12 8e 44 	call	#0x448e	
+
+  SetLeds(BROWN, 0);
+    4356:	4e 43       	clr.b	r14		
+    4358:	6f 43       	mov.b	#2,	r15	;r3 As==10
+    435a:	b0 12 90 41 	call	#0x4190	
+
+  ResumeContext();
+    435e:	b0 12 d6 41 	call	#0x41d6	
+  PrintResults();
+    4362:	b0 12 6e 46 	call	#0x466e	
+}
+    4366:	3c 41       	pop	r12		
+    4368:	3d 41       	pop	r13		
+    436a:	3e 41       	pop	r14		
+    436c:	3f 41       	pop	r15		
+    436e:	00 13       	reti			
+
+00004370 <Scheduler_NP_FP>:
+	t->Flags ^= BUSY_EXEC;
+	/* ---------------------------------------------------------------- */
+}
+
+void Scheduler_NP_FP(Task Tasks[])
+{
+    4370:	0b 12       	push	r11		
+    4372:	0a 12       	push	r10		
+    4374:	09 12       	push	r9		
+    4376:	0b 4f       	mov	r15,	r11	
+	t->Taskf(t->ExecutionTime); // execute task
+	t->Flags ^= BUSY_EXEC;
+	/* ---------------------------------------------------------------- */
+}
+
+void Scheduler_NP_FP(Task Tasks[])
+    4378:	09 4f       	mov	r15,	r9	
+    437a:	39 50 30 00 	add	#48,	r9	;#0x0030
+{
+	/* ----------------------- INSERT CODE HERE ----------------------- */
+	int i;
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		StartTracking(TT_SCHEDULER);
+    437e:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4380:	b0 12 46 46 	call	#0x4646	
+		Taskp t = &Tasks[i];
+		if (t->Flags & BUSY_EXEC)
+    4384:	1f 4b 08 00 	mov	8(r11),	r15	;0x0008(r11)
+    4388:	3f f0 00 02 	and	#512,	r15	;#0x0200
+    438c:	06 24       	jz	$+14     	;abs 0x439a
+		{
+			StopTracking(TT_SCHEDULER);
+    438e:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4390:	b0 12 52 46 	call	#0x4652	
+			PrintResults();
+    4394:	b0 12 6e 46 	call	#0x466e	
+			break;
+    4398:	2d 3c       	jmp	$+92     	;abs 0x43f4
+		}
+		else
+		{
+			if (!(t->Flags & TRIGGERED))
+    439a:	1e 4b 08 00 	mov	8(r11),	r14	;0x0008(r11)
+    439e:	3e f0 40 00 	and	#64,	r14	;#0x0040
+    43a2:	0e 9f       	cmp	r15,	r14	
+    43a4:	04 20       	jnz	$+10     	;abs 0x43ae
+			{
+				t->Activated = t->Invoked;
+    43a6:	5f 4b 07 00 	mov.b	7(r11),	r15	;0x0007(r11)
+    43aa:	cb 4f 06 00 	mov.b	r15,	6(r11)	;0x0006(r11)
+			}
+			StopTracking(TT_SCHEDULER);
+    43ae:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    43b0:	b0 12 52 46 	call	#0x4652	
+			PrintResults();
+    43b4:	b0 12 6e 46 	call	#0x466e	
+
+			static int Running = 0;
+
+			while (t->Activated != t->Invoked)
+    43b8:	12 3c       	jmp	$+38     	;abs 0x43de
+			{
+				if (!Running)
+    43ba:	0a 93       	tst	r10		
+    43bc:	14 20       	jnz	$+42     	;abs 0x43e6
+				{
+					Running = 1;
+    43be:	92 43 06 11 	mov	#1,	&0x1106	;r3 As==01
+					t->Flags |= BUSY_EXEC;
+    43c2:	bb d0 00 02 	bis	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    43c6:	08 00 
+
+static void ExecuteTask(Taskp t)
+{
+	/* ----------------------- INSERT CODE HERE ----------------------- */
+
+	t->Invoked++;
+    43c8:	db 53 07 00 	inc.b	7(r11)		;0x0007(r11)
+	t->Taskf(t->ExecutionTime); // execute task
+    43cc:	1f 4b 0a 00 	mov	10(r11),r15	;0x000a(r11)
+    43d0:	9b 12 0c 00 	call	12(r11)	;0x000c(r11)
+	t->Flags ^= BUSY_EXEC;
+    43d4:	bb e0 00 02 	xor	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    43d8:	08 00 
+				if (!Running)
+				{
+					Running = 1;
+					t->Flags |= BUSY_EXEC;
+					ExecuteTask(t);
+					Running = 0;
+    43da:	82 4a 06 11 	mov	r10,	&0x1106	
+			StopTracking(TT_SCHEDULER);
+			PrintResults();
+
+			static int Running = 0;
+
+			while (t->Activated != t->Invoked)
+    43de:	5f 4b 07 00 	mov.b	7(r11),	r15	;0x0007(r11)
+			{
+				if (!Running)
+    43e2:	1a 42 06 11 	mov	&0x1106,r10	
+			StopTracking(TT_SCHEDULER);
+			PrintResults();
+
+			static int Running = 0;
+
+			while (t->Activated != t->Invoked)
+    43e6:	cb 9f 06 00 	cmp.b	r15,	6(r11)	;0x0006(r11)
+    43ea:	e7 23       	jnz	$-48     	;abs 0x43ba
+    43ec:	3b 50 10 00 	add	#16,	r11	;#0x0010
+
+void Scheduler_NP_FP(Task Tasks[])
+{
+	/* ----------------------- INSERT CODE HERE ----------------------- */
+	int i;
+	for (i = 0; i < NUMTASKS; i++)
+    43f0:	0b 99       	cmp	r9,	r11	
+    43f2:	c5 23       	jnz	$-116    	;abs 0x437e
+				}
+			}
+		}
+	}
+	/* ---------------------------------------------------------------- */
+}
+    43f4:	39 41       	pop	r9		
+    43f6:	3a 41       	pop	r10		
+    43f8:	3b 41       	pop	r11		
+    43fa:	30 41       	ret			
+
+000043fc <Scheduler_P_FP>:
+	t->Flags ^= BUSY_EXEC;
+	/* ---------------------------------------------------------------- */
+}
+
+void Scheduler_P_FP(Task Tasks[])
+{
+    43fc:	0b 12       	push	r11		
+    43fe:	0a 12       	push	r10		
+    4400:	0b 4f       	mov	r15,	r11	
+	t->Taskf(t->ExecutionTime); // execute task
+	t->Flags ^= BUSY_EXEC;
+	/* ---------------------------------------------------------------- */
+}
+
+void Scheduler_P_FP(Task Tasks[])
+    4402:	0a 4f       	mov	r15,	r10	
+    4404:	3a 50 30 00 	add	#48,	r10	;#0x0030
+{
+	/* ----------------------- INSERT CODE HERE ----------------------- */
+	int i;
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		StartTracking(TT_SCHEDULER);
+    4408:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    440a:	b0 12 46 46 	call	#0x4646	
+		Taskp t = &Tasks[i];
+		if (t->Flags & BUSY_EXEC)
+    440e:	1f 4b 08 00 	mov	8(r11),	r15	;0x0008(r11)
+    4412:	3f f0 00 02 	and	#512,	r15	;#0x0200
+    4416:	06 24       	jz	$+14     	;abs 0x4424
+		{
+			StopTracking(TT_SCHEDULER);
+    4418:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    441a:	b0 12 52 46 	call	#0x4652	
+			PrintResults();
+    441e:	b0 12 6e 46 	call	#0x466e	
+			break;
+    4422:	32 3c       	jmp	$+102    	;abs 0x4488
+		}
+		else
+		{
+			if (!(t->Flags & TRIGGERED))
+    4424:	1e 4b 08 00 	mov	8(r11),	r14	;0x0008(r11)
+    4428:	3e f0 40 00 	and	#64,	r14	;#0x0040
+    442c:	0e 9f       	cmp	r15,	r14	
+    442e:	04 20       	jnz	$+10     	;abs 0x4438
+			{
+				t->Activated = t->Invoked;
+    4430:	5f 4b 07 00 	mov.b	7(r11),	r15	;0x0007(r11)
+    4434:	cb 4f 06 00 	mov.b	r15,	6(r11)	;0x0006(r11)
+			}
+			StopTracking(TT_SCHEDULER);
+    4438:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    443a:	b0 12 52 46 	call	#0x4652	
+			PrintResults();
+    443e:	b0 12 6e 46 	call	#0x466e	
+
+			while (t->Activated != t->Invoked)
+    4442:	1a 3c       	jmp	$+54     	;abs 0x4478
+			{
+				StartTracking(TT_SCHEDULER);
+    4444:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4446:	b0 12 46 46 	call	#0x4646	
+				t->Flags |= BUSY_EXEC;
+    444a:	bb d0 00 02 	bis	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    444e:	08 00 
+				_EINT();
+    4450:	32 d2       	eint			
+				StopTracking(TT_SCHEDULER);
+    4452:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4454:	b0 12 52 46 	call	#0x4652	
+
+static void ExecuteTask(Taskp t)
+{
+	/* ----------------------- INSERT CODE HERE ----------------------- */
+
+	t->Invoked++;
+    4458:	db 53 07 00 	inc.b	7(r11)		;0x0007(r11)
+	t->Taskf(t->ExecutionTime); // execute task
+    445c:	1f 4b 0a 00 	mov	10(r11),r15	;0x000a(r11)
+    4460:	9b 12 0c 00 	call	12(r11)	;0x000c(r11)
+	t->Flags ^= BUSY_EXEC;
+    4464:	bb e0 00 02 	xor	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    4468:	08 00 
+				StartTracking(TT_SCHEDULER);
+				t->Flags |= BUSY_EXEC;
+				_EINT();
+				StopTracking(TT_SCHEDULER);
+				ExecuteTask(t);
+				StartTracking(TT_SCHEDULER);
+    446a:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    446c:	b0 12 46 46 	call	#0x4646	
+				_DINT();
+    4470:	32 c2       	dint			
+				StopTracking(TT_SCHEDULER);
+    4472:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4474:	b0 12 52 46 	call	#0x4652	
+				t->Activated = t->Invoked;
+			}
+			StopTracking(TT_SCHEDULER);
+			PrintResults();
+
+			while (t->Activated != t->Invoked)
+    4478:	db 9b 07 00 	cmp.b	7(r11),	6(r11)	;0x0007(r11), 0x0006(r11)
+    447c:	06 00 
+    447e:	e2 23       	jnz	$-58     	;abs 0x4444
+    4480:	3b 50 10 00 	add	#16,	r11	;#0x0010
+
+void Scheduler_P_FP(Task Tasks[])
+{
+	/* ----------------------- INSERT CODE HERE ----------------------- */
+	int i;
+	for (i = 0; i < NUMTASKS; i++)
+    4484:	0b 9a       	cmp	r10,	r11	
+    4486:	c0 23       	jnz	$-126    	;abs 0x4408
+				StopTracking(TT_SCHEDULER);
+			}
+		}
+	}
+	/* ---------------------------------------------------------------- */
+}
+    4488:	3a 41       	pop	r10		
+    448a:	3b 41       	pop	r11		
+    448c:	30 41       	ret			
+
+0000448e <Scheduler_P_EDF>:
+	t->Taskf(t->ExecutionTime); // execute task
+	t->Flags ^= BUSY_EXEC;
+}
+
+void Scheduler_P_EDF(Task Tasks[])
+{
+    448e:	0b 12       	push	r11		
+    4490:	0a 12       	push	r10		
+    4492:	09 12       	push	r9		
+    4494:	08 12       	push	r8		
+    4496:	04 12       	push	r4		
+    4498:	21 83       	decd	r1		
+    449a:	0a 4f       	mov	r15,	r10	
+	StartTracking(TT_SCHEDULER);
+    449c:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    449e:	b0 12 46 46 	call	#0x4646	
+	uint8_t Q[NUMTASKS - 1];
+
+	//Init Q array Task numbers
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		Q[i] = i;
+    44a2:	c1 43 00 00 	mov.b	#0,	0(r1)	;r3 As==00, 0x0000(r1)
+    44a6:	d1 43 01 00 	mov.b	#1,	1(r1)	;r3 As==01, 0x0001(r1)
+    44aa:	e1 43 02 00 	mov.b	#2,	2(r1)	;r3 As==10, 0x0002(r1)
+    44ae:	2f 43       	mov	#2,	r15	;r3 As==10
+    44b0:	1e 3c       	jmp	$+62     	;abs 0x44ee
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		int j;
+		for (j = 0; j < NUMTASKS - i - 1; j++)
+		{
+			if (Tasks[Q[j]].NextRelease > Tasks[Q[j + 1]].NextRelease)
+    44b2:	6b 4d       	mov.b	@r13,	r11	
+    44b4:	4e 4b       	mov.b	r11,	r14	
+    44b6:	0e 5e       	rla	r14		
+    44b8:	0e 5e       	rla	r14		
+    44ba:	0e 5e       	rla	r14		
+    44bc:	0e 5e       	rla	r14		
+    44be:	0e 5a       	add	r10,	r14	
+    44c0:	28 4e       	mov	@r14,	r8	
+    44c2:	1c 53       	inc	r12		
+    44c4:	59 4d 01 00 	mov.b	1(r13),	r9	;0x0001(r13)
+    44c8:	4e 49       	mov.b	r9,	r14	
+    44ca:	0e 5e       	rla	r14		
+    44cc:	0e 5e       	rla	r14		
+    44ce:	0e 5e       	rla	r14		
+    44d0:	0e 5e       	rla	r14		
+    44d2:	0e 5a       	add	r10,	r14	
+    44d4:	8e 98 00 00 	cmp	r8,	0(r14)	;0x0000(r14)
+    44d8:	04 2c       	jc	$+10     	;abs 0x44e2
+			{
+				uint8_t T = Q[j];
+				Q[j] = Q[j+1];
+    44da:	cd 49 00 00 	mov.b	r9,	0(r13)	;0x0000(r13)
+				Q[j+1] = T;
+    44de:	cd 4b 01 00 	mov.b	r11,	1(r13)	;0x0001(r13)
+    44e2:	1d 53       	inc	r13		
+
+	//Bubblesort on descending order
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		int j;
+		for (j = 0; j < NUMTASKS - i - 1; j++)
+    44e4:	0c 9f       	cmp	r15,	r12	
+    44e6:	e5 3b       	jl	$-52     	;abs 0x44b2
+    44e8:	3f 53       	add	#-1,	r15	;r3 As==11
+	{
+		Q[i] = i;
+	}
+
+	//Bubblesort on descending order
+	for (i = 0; i < NUMTASKS; i++)
+    44ea:	3f 93       	cmp	#-1,	r15	;r3 As==11
+    44ec:	04 24       	jz	$+10     	;abs 0x44f6
+    44ee:	04 41       	mov	r1,	r4	
+    44f0:	0d 41       	mov	r1,	r13	
+    44f2:	0c 43       	clr	r12		
+    44f4:	f7 3f       	jmp	$-16     	;abs 0x44e4
+	t->Invoked++;
+	t->Taskf(t->ExecutionTime); // execute task
+	t->Flags ^= BUSY_EXEC;
+}
+
+void Scheduler_P_EDF(Task Tasks[])
+    44f6:	09 41       	mov	r1,	r9	
+    44f8:	39 50 03 00 	add	#3,	r9	;#0x0003
+		}
+	}
+
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		Taskp T = &Tasks[Q[i]];
+    44fc:	6b 44       	mov.b	@r4,	r11	
+    44fe:	0b 5b       	rla	r11		
+    4500:	0b 5b       	rla	r11		
+    4502:	0b 5b       	rla	r11		
+    4504:	0b 5b       	rla	r11		
+    4506:	0b 5a       	add	r10,	r11	
+		if (T->Flags & BUSY_EXEC)
+    4508:	bb b0 00 02 	bit	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    450c:	08 00 
+    450e:	26 20       	jnz	$+78     	;abs 0x455c
+		{
+			break;
+		}
+		else
+		{
+			if (T->Activated != T->Invoked)
+    4510:	5f 4b 07 00 	mov.b	7(r11),	r15	;0x0007(r11)
+    4514:	cb 9f 06 00 	cmp.b	r15,	6(r11)	;0x0006(r11)
+    4518:	1e 24       	jz	$+62     	;abs 0x4556
+			{
+				if (T->Flags & TRIGGERED)
+    451a:	bb b0 40 00 	bit	#64,	8(r11)	;#0x0040, 0x0008(r11)
+    451e:	08 00 
+    4520:	18 24       	jz	$+50     	;abs 0x4552
+				{
+					//StartTracking(TT_SCHEDULER);
+					T->Flags |= BUSY_EXEC;
+    4522:	bb d0 00 02 	bis	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    4526:	08 00 
+					_EINT();
+    4528:	32 d2       	eint			
+					StopTracking(TT_SCHEDULER);
+    452a:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    452c:	b0 12 52 46 	call	#0x4652	
+#include "TimeTracking.h"
+#include "Led.h"
+
+static void ExecuteTask(Taskp t)
+{
+	t->Invoked++;
+    4530:	db 53 07 00 	inc.b	7(r11)		;0x0007(r11)
+	t->Taskf(t->ExecutionTime); // execute task
+    4534:	1f 4b 0a 00 	mov	10(r11),r15	;0x000a(r11)
+    4538:	9b 12 0c 00 	call	12(r11)	;0x000c(r11)
+	t->Flags ^= BUSY_EXEC;
+    453c:	bb e0 00 02 	xor	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    4540:	08 00 
+					//StartTracking(TT_SCHEDULER);
+					T->Flags |= BUSY_EXEC;
+					_EINT();
+					StopTracking(TT_SCHEDULER);
+					ExecuteTask(T);
+					StartTracking(TT_SCHEDULER);
+    4542:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4544:	b0 12 46 46 	call	#0x4646	
+					_DINT();
+    4548:	32 c2       	dint			
+					StopTracking(TT_SCHEDULER);
+    454a:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    454c:	b0 12 52 46 	call	#0x4652	
+    4550:	02 3c       	jmp	$+6      	;abs 0x4556
+				}
+				else
+				{
+					T->Activated = T->Invoked;
+    4552:	cb 4f 06 00 	mov.b	r15,	6(r11)	;0x0006(r11)
+    4556:	14 53       	inc	r4		
+				Q[j+1] = T;
+			}
+		}
+	}
+
+	for (i = 0; i < NUMTASKS; i++)
+    4558:	04 99       	cmp	r9,	r4	
+    455a:	d0 23       	jnz	$-94     	;abs 0x44fc
+					T->Activated = T->Invoked;
+				}
+			}
+		}
+	}
+}
+    455c:	21 53       	incd	r1		
+    455e:	34 41       	pop	r4		
+    4560:	38 41       	pop	r8		
+    4562:	39 41       	pop	r9		
+    4564:	3a 41       	pop	r10		
+    4566:	3b 41       	pop	r11		
+    4568:	30 41       	ret			
+
+0000456a <Scheduler_NP_EDF>:
+	t->Invoked++;
+	t->Taskf(t->ExecutionTime); // execute task
+}
+
+void Scheduler_NP_EDF(Task Tasks[])
+{
+    456a:	0b 12       	push	r11		
+    456c:	0a 12       	push	r10		
+    456e:	09 12       	push	r9		
+    4570:	08 12       	push	r8		
+    4572:	04 12       	push	r4		
+    4574:	21 83       	decd	r1		
+    4576:	0a 4f       	mov	r15,	r10	
+	uint8_t Q[NUMTASKS - 1];
+
+	//Init Q array Task numbers
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		Q[i] = i;
+    4578:	c1 43 00 00 	mov.b	#0,	0(r1)	;r3 As==00, 0x0000(r1)
+    457c:	d1 43 01 00 	mov.b	#1,	1(r1)	;r3 As==01, 0x0001(r1)
+    4580:	e1 43 02 00 	mov.b	#2,	2(r1)	;r3 As==10, 0x0002(r1)
+    4584:	2f 43       	mov	#2,	r15	;r3 As==10
+    4586:	1e 3c       	jmp	$+62     	;abs 0x45c4
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		int j;
+		for (j = 0; j < NUMTASKS - i - 1; j++)
+		{
+			if (Tasks[Q[j]].NextRelease > Tasks[Q[j + 1]].NextRelease)
+    4588:	6b 4d       	mov.b	@r13,	r11	
+    458a:	4e 4b       	mov.b	r11,	r14	
+    458c:	0e 5e       	rla	r14		
+    458e:	0e 5e       	rla	r14		
+    4590:	0e 5e       	rla	r14		
+    4592:	0e 5e       	rla	r14		
+    4594:	0e 5a       	add	r10,	r14	
+    4596:	28 4e       	mov	@r14,	r8	
+    4598:	1c 53       	inc	r12		
+    459a:	59 4d 01 00 	mov.b	1(r13),	r9	;0x0001(r13)
+    459e:	4e 49       	mov.b	r9,	r14	
+    45a0:	0e 5e       	rla	r14		
+    45a2:	0e 5e       	rla	r14		
+    45a4:	0e 5e       	rla	r14		
+    45a6:	0e 5e       	rla	r14		
+    45a8:	0e 5a       	add	r10,	r14	
+    45aa:	8e 98 00 00 	cmp	r8,	0(r14)	;0x0000(r14)
+    45ae:	04 2c       	jc	$+10     	;abs 0x45b8
+			{
+				uint8_t T = Q[j];
+				Q[j] = Q[j + 1];
+    45b0:	cd 49 00 00 	mov.b	r9,	0(r13)	;0x0000(r13)
+				Q[j + 1] = T;
+    45b4:	cd 4b 01 00 	mov.b	r11,	1(r13)	;0x0001(r13)
+    45b8:	1d 53       	inc	r13		
+
+	//Bubblesort on descending order
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		int j;
+		for (j = 0; j < NUMTASKS - i - 1; j++)
+    45ba:	0c 9f       	cmp	r15,	r12	
+    45bc:	e5 3b       	jl	$-52     	;abs 0x4588
+    45be:	3f 53       	add	#-1,	r15	;r3 As==11
+	{
+		Q[i] = i;
+	}
+
+	//Bubblesort on descending order
+	for (i = 0; i < NUMTASKS; i++)
+    45c0:	3f 93       	cmp	#-1,	r15	;r3 As==11
+    45c2:	04 24       	jz	$+10     	;abs 0x45cc
+    45c4:	04 41       	mov	r1,	r4	
+    45c6:	0d 41       	mov	r1,	r13	
+    45c8:	0c 43       	clr	r12		
+    45ca:	f7 3f       	jmp	$-16     	;abs 0x45ba
+{
+	t->Invoked++;
+	t->Taskf(t->ExecutionTime); // execute task
+}
+
+void Scheduler_NP_EDF(Task Tasks[])
+    45cc:	09 41       	mov	r1,	r9	
+    45ce:	39 50 03 00 	add	#3,	r9	;#0x0003
+		}
+	}
+
+	for (i = 0; i < NUMTASKS; i++)
+	{
+		Taskp T = &Tasks[Q[i]];
+    45d2:	6b 44       	mov.b	@r4,	r11	
+    45d4:	0b 5b       	rla	r11		
+    45d6:	0b 5b       	rla	r11		
+    45d8:	0b 5b       	rla	r11		
+    45da:	0b 5b       	rla	r11		
+    45dc:	0b 5a       	add	r10,	r11	
+		if (T->Flags & BUSY_EXEC )
+    45de:	bb b0 00 02 	bit	#512,	8(r11)	;#0x0200, 0x0008(r11)
+    45e2:	08 00 
+    45e4:	21 24       	jz	$+68     	;abs 0x4628
+    45e6:	28 3c       	jmp	$+82     	;abs 0x4638
+		else
+		{
+			static int Running = 0;
+			while (T->Activated != T->Invoked)
+			{
+				if (T->Flags & TRIGGERED && !Running)
+    45e8:	bb b0 40 00 	bit	#64,	8(r11)	;#0x0040, 0x0008(r11)
+    45ec:	08 00 
+    45ee:	1a 24       	jz	$+54     	;abs 0x4624
+    45f0:	82 93 08 11 	tst	&0x1108	
+    45f4:	17 20       	jnz	$+48     	;abs 0x4624
+				{
+					int j;
+					Running = 1;
+    45f6:	92 43 08 11 	mov	#1,	&0x1108	;r3 As==01
+					StartTracking(TT_SCHEDULER);
+    45fa:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    45fc:	b0 12 46 46 	call	#0x4646	
+					//_EINT();
+					StopTracking(TT_SCHEDULER);
+    4600:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4602:	b0 12 52 46 	call	#0x4652	
+#include "TimeTracking.h"
+#include "Led.h"
+
+static void ExecuteTask(Taskp t)
+{
+	t->Invoked++;
+    4606:	db 53 07 00 	inc.b	7(r11)		;0x0007(r11)
+	t->Taskf(t->ExecutionTime); // execute task
+    460a:	1f 4b 0a 00 	mov	10(r11),r15	;0x000a(r11)
+    460e:	9b 12 0c 00 	call	12(r11)	;0x000c(r11)
+					Running = 1;
+					StartTracking(TT_SCHEDULER);
+					//_EINT();
+					StopTracking(TT_SCHEDULER);
+					ExecuteTask(T);
+					StartTracking(TT_SCHEDULER);
+    4612:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    4614:	b0 12 46 46 	call	#0x4646	
+					//_DINT();
+					StopTracking(TT_SCHEDULER);
+    4618:	5f 43       	mov.b	#1,	r15	;r3 As==01
+    461a:	b0 12 52 46 	call	#0x4652	
+					Running = 0;
+    461e:	82 43 08 11 	mov	#0,	&0x1108	;r3 As==00
+		else
+		{
+			static int Running = 0;
+			while (T->Activated != T->Invoked)
+			{
+				if (T->Flags & TRIGGERED && !Running)
+    4622:	02 3c       	jmp	$+6      	;abs 0x4628
+					StopTracking(TT_SCHEDULER);
+					Running = 0;
+				}
+				else
+				{
+					T->Activated = T->Invoked;
+    4624:	cb 4f 06 00 	mov.b	r15,	6(r11)	;0x0006(r11)
+			break;
+		}
+		else
+		{
+			static int Running = 0;
+			while (T->Activated != T->Invoked)
+    4628:	5f 4b 07 00 	mov.b	7(r11),	r15	;0x0007(r11)
+    462c:	cb 9f 06 00 	cmp.b	r15,	6(r11)	;0x0006(r11)
+    4630:	db 23       	jnz	$-72     	;abs 0x45e8
+    4632:	14 53       	inc	r4		
+				Q[j + 1] = T;
+			}
+		}
+	}
+
+	for (i = 0; i < NUMTASKS; i++)
+    4634:	04 99       	cmp	r9,	r4	
+    4636:	cd 23       	jnz	$-100    	;abs 0x45d2
+					T->Activated = T->Invoked;
+				}
+			}
+		}
+	}
+}
+    4638:	21 53       	incd	r1		
+    463a:	34 41       	pop	r4		
+    463c:	38 41       	pop	r8		
+    463e:	39 41       	pop	r9		
+    4640:	3a 41       	pop	r10		
+    4642:	3b 41       	pop	r11		
+    4644:	30 41       	ret			
+
+00004646 <StartTracking>:
+static uint16_t Totals[TT_MAX];
+static uint8_t JobsExecuted;
+
+void StartTracking(uint8_t index)
+{
+    StartTimes[index] = TAR;
+    4646:	7f f3       	and.b	#-1,	r15	;r3 As==11
+    4648:	0f 5f       	rla	r15		
+    464a:	9f 42 70 01 	mov	&0x0170,4362(r15);0x110a(r15)
+    464e:	0a 11 
+}
+    4650:	30 41       	ret			
+
+00004652 <StopTracking>:
+
+void StopTracking(uint8_t index)
+{
+    Totals[index] += TAR - StartTimes[index];
+    4652:	7f f3       	and.b	#-1,	r15	;r3 As==11
+    4654:	0f 5f       	rla	r15		
+    4656:	1e 42 70 01 	mov	&0x0170,r14	
+    465a:	1e 5f 0e 11 	add	4366(r15),r14	;0x110e(r15)
+    465e:	1e 8f 0a 11 	sub	4362(r15),r14	;0x110a(r15)
+    4662:	8f 4e 0e 11 	mov	r14,	4366(r15);0x110e(r15)
+}
+    4666:	30 41       	ret			
+
+00004668 <AddJobExecution>:
+
+void AddJobExecution()
+{
+    JobsExecuted++;
+    4668:	d2 53 12 11 	inc.b	&0x1112	
+}
+    466c:	30 41       	ret			
+
+0000466e <PrintResults>:
+
+void PrintResults()
+{
+    P1OUT = Totals[TT_TIMER_INTERRUPT] & 0xFF;
+    466e:	3e 40 0e 11 	mov	#4366,	r14	;#0x110e
+    4672:	2d 4e       	mov	@r14,	r13	
+    4674:	c2 4d 21 00 	mov.b	r13,	&0x0021	
+    P2OUT = Totals[TT_TIMER_INTERRUPT] >> 8;
+    4678:	3f 4e       	mov	@r14+,	r15	
+    467a:	0f 4d       	mov	r13,	r15	
+    467c:	8f 10       	swpb	r15		
+    467e:	7f f3       	and.b	#-1,	r15	;r3 As==11
+    4680:	c2 4f 29 00 	mov.b	r15,	&0x0029	
+
+    P3OUT = Totals[TT_SCHEDULER] & 0xFF;
+    4684:	2f 4e       	mov	@r14,	r15	
+    4686:	c2 4f 19 00 	mov.b	r15,	&0x0019	
+    P4OUT = Totals[TT_SCHEDULER] >> 8;
+    468a:	8f 10       	swpb	r15		
+    468c:	7f f3       	and.b	#-1,	r15	;r3 As==11
+    468e:	c2 4f 1d 00 	mov.b	r15,	&0x001d	
+
+    P6OUT = JobsExecuted;
+    4692:	d2 42 12 11 	mov.b	&0x1112,&0x0035	
+    4696:	35 00 
+    4698:	30 41       	ret			
+
+Disassembly of section .vectors:
+
+0000ffe0 <InterruptVectors>:
+    ffe0:	30 40 30 40 30 40 30 40 30 40 30 40 d4 42 30 40     0@0@0@0@0@0@.B0@
+    fff0:	30 40 30 40 30 40 30 40 30 40 30 40 30 40 00 40     0@0@0@0@0@0@0@.@

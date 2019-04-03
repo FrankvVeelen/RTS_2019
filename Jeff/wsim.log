@@ -7,29 +7,29 @@ model : msp430f1611
   xt2 : 0
 ==
 Memory monitor
-  monitor: NextInterruptTime 0x1140:2  w mod 0 0
+  monitor: NextInterruptTime 0x1144:2  w mod 0 0
 ==
 
 ================
 WSim stats:
 -----------
-  simulation user time          : 0.000 s (312 ns)
+  simulation user time          : 0.000 s (316 ns)
   simulation backtracks         : 0
 
 Machine stats:
 --------------
-  simulated time                : 5000001257 ns (5.000 s)
-  simulation speedup            : 16.02
+  simulated time                : 5000001285 ns (5.000 s)
+  simulation speedup            : 15.82
   machine exit with signal      : none
 
 MCU:
 ----
-  simulated mcu instructions    : 1580435
+  simulated mcu instructions    : 1580519
   simulated mcu cycles          : 3750501
-  simulated mcu mean freq       : 750100.06 c/s (0.75 MHz)
-  simulation mean freq          : 12020104.54 c/s (12.02 MHz)
+  simulated mcu mean freq       : 750100.00 c/s (0.75 MHz)
+  simulation mean freq          : 11867960.47 c/s (11.87 MHz)
      - does not take into account sleep modes
-  mcu exit at PC                : 0x40d0
+  mcu exit at PC                : 0x40cc
   mcu exit in LPM mode          : Active mode
   mcu exit with IV              : 0x0000
 

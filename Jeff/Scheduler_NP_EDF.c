@@ -43,16 +43,13 @@ void Scheduler_NP_EDF(Task Tasks[])
 		}
 		else
 		{
+			static int Running = 0;
 			while (T->Activated != T->Invoked)
 			{
-				if (T->Flags & TRIGGERED)
+				if (T->Flags & TRIGGERED && !Running)
 				{
 					int j;
-					for (j = 0; j < NUMTASKS; j++)
-					{
-						Taskp T = &Tasks[j];
-						T->Flags |= BUSY_EXEC;
-					}
+					Running = 1;
 					StartTracking(TT_SCHEDULER);
 					//_EINT();
 					StopTracking(TT_SCHEDULER);
@@ -60,11 +57,7 @@ void Scheduler_NP_EDF(Task Tasks[])
 					StartTracking(TT_SCHEDULER);
 					//_DINT();
 					StopTracking(TT_SCHEDULER);
-					for (j = 0; j < NUMTASKS; j++)
-					{
-						Taskp T = &Tasks[j];
-						T->Flags ^= BUSY_EXEC;
-					}
+					Running = 0;
 				}
 				else
 				{

@@ -11,6 +11,7 @@ static void ExecuteTask(Taskp t)
 
 void Scheduler_P_EDF(Task Tasks[])
 {
+	StartTracking(TT_SCHEDULER);
 	uint8_t i;
 	uint8_t Q[NUMTASKS - 1];
 
@@ -48,7 +49,7 @@ void Scheduler_P_EDF(Task Tasks[])
 			{
 				if (T->Flags & TRIGGERED)
 				{
-					StartTracking(TT_SCHEDULER);
+					//StartTracking(TT_SCHEDULER);
 					T->Flags |= BUSY_EXEC;
 					_EINT();
 					StopTracking(TT_SCHEDULER);

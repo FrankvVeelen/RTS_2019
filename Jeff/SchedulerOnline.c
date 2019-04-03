@@ -125,7 +125,6 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
   SetLeds(WHITE, 0);
   StopTracking(TT_TIMER_INTERRUPT);
   
-  StartTracking(TT_SCHEDULER);
   SetLeds(BROWN, 1);
 
   CALL_SCHEDULER;
@@ -133,8 +132,6 @@ interrupt (TIMERA0_VECTOR) TimerIntrpt (void)
   SetLeds(BROWN, 0);
 
   ResumeContext();
-
-  StopTracking(TT_SCHEDULER);
   PrintResults();
 }
 
