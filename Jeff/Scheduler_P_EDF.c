@@ -12,9 +12,9 @@ static void ExecuteTask(Taskp t)
 void Scheduler_P_EDF(Task Tasks[])
 {
 	uint8_t i;
-	uint8_t Q[NUMTASKS-1];
+	uint8_t Q[NUMTASKS - 1];
 
-	//Init Q array of Task pointers, so we don't change the original Task array
+	//Init Q array Task numbers
 	for (i = 0; i < NUMTASKS; i++)
 	{
 		Q[i] = i;
@@ -26,11 +26,11 @@ void Scheduler_P_EDF(Task Tasks[])
 		int j;
 		for (j = 0; j < NUMTASKS - i - 1; j++)
 		{
-			if (&Tasks[Q[j]]->NextPendingDeadline > &Tasks[Q[j + 1]]->NextPendingDeadline)
+			if (Tasks[Q[j]].NextRelease > Tasks[Q[j + 1]].NextRelease)
 			{
-				uint8_t T = Q[j+1];
-				Q[j+1] = Q[j];
-				Q[j] = T;
+				uint8_t T = Q[j];
+				Q[j] = Q[j+1];
+				Q[j+1] = T;
 			}
 		}
 	}
@@ -56,8 +56,8 @@ void Scheduler_P_EDF(Task Tasks[])
 					StartTracking(TT_SCHEDULER);
 					_DINT();
 					StopTracking(TT_SCHEDULER);
-				} 
-				else 
+				}
+				else
 				{
 					T->Activated = T->Invoked;
 				}
