@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "ErrorCodes.h"
 
-#define NUMTASKS    3  /* # tasks admitted                                 */
+#define NUMTASKS    3 /* # tasks admitted                                 */
 
 #define DIRECT      1   /* task flag: execute uninterruptable, when ready   */
 #define PERIODIC    2   /* general flag: trigger by timer interrupt         */
@@ -50,7 +50,7 @@ uint8_t RegisterTask (uint16_t Phasing, uint16_t Period, uint16_t ExecutionTime,
                       void (*TaskFunc) (uint16_t), uint8_t Prio, uint8_t Flags);
 uint8_t UnRegisterTask (uint8_t Prio);
 
-#define P_EDF
+#define NP_FP
 
 #if defined (NP_FP)
 #define CALL_SCHEDULER Scheduler_NP_FP(Tasks);

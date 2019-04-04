@@ -10,6 +10,7 @@ static void ExecuteTask(Taskp t)
 
 void Scheduler_NP_EDF(Task Tasks[])
 {
+	StartTracking(TT_SCHEDULER);
 	uint8_t i;
 	uint8_t Q[NUMTASKS - 1];
 
@@ -33,31 +34,25 @@ void Scheduler_NP_EDF(Task Tasks[])
 			}
 		}
 	}
-
+	StopTracking(TT_SCHEDULER);
 	for (i = 0; i < NUMTASKS; i++)
 	{
 		Taskp T = &Tasks[Q[i]];
 		if (T->Flags & BUSY_EXEC )
 		{
+			StopTracking(TT_SCHEDULER);
 			break;
 		}
 		else
 		{
-			static int Running = 0;
 			while (T->Activated != T->Invoked)
 			{
 				if (T->Flags & TRIGGERED && !Running)
 				{
 					int j;
-					Running = 1;
-					StartTracking(TT_SCHEDULER);
-					//_EINT();
 					StopTracking(TT_SCHEDULER);
 					ExecuteTask(T);
 					StartTracking(TT_SCHEDULER);
-					//_DINT();
-					StopTracking(TT_SCHEDULER);
-					Running = 0;
 				}
 				else
 				{
@@ -65,5 +60,7 @@ void Scheduler_NP_EDF(Task Tasks[])
 				}
 			}
 		}
+		StopTracking(TT_SCHEDULER);
+		PrintResults();
 	}
 }

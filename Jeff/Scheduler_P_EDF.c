@@ -35,21 +35,23 @@ void Scheduler_P_EDF(Task Tasks[])
 			}
 		}
 	}
-
+	StopTracking(TT_SCHEDULER);
 	for (i = 0; i < NUMTASKS; i++)
 	{
 		Taskp T = &Tasks[Q[i]];
 		if (T->Flags & BUSY_EXEC)
 		{
+			//StopTracking(TT_SCHEDULER);
+			//PrintResults();
 			break;
 		}
 		else
 		{
-			if (T->Activated != T->Invoked)
+			while (T->Activated != T->Invoked)
 			{
 				if (T->Flags & TRIGGERED)
 				{
-					//StartTracking(TT_SCHEDULER);
+					StartTracking(TT_SCHEDULER);
 					T->Flags |= BUSY_EXEC;
 					_EINT();
 					StopTracking(TT_SCHEDULER);
@@ -60,9 +62,11 @@ void Scheduler_P_EDF(Task Tasks[])
 				}
 				else
 				{
+					//StopTracking(TT_SCHEDULER);
 					T->Activated = T->Invoked;
 				}
 			}
 		}
+		PrintResults();
 	}
 }
